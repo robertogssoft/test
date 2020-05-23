@@ -4,17 +4,29 @@ import {Link} from "react-router-dom";
 import {formatter} from './../../functions';
 import {UserContext} from '../../context/UserContext';
 
+const status = ['Sin solicitud', 'En proceso', 'Validando'];
+
 export default function Solicitud() {
   const {user, logoutUser, descontar} = useContext(UserContext);
   const [credito, setCredito] = useState('');
+  const [estatus, setStatus] = useState(status[0]);
 
   const solicitar = () => {
     if (credito <= user.credito && credito > 0){
-      descontar(credito);
+      setStatus(status[1]);
+      cambiarEstatus(2);
     } else {
       alert('Por favor, revise su solicitud');
     }
   };
+
+  const cambiarEstatus = (step) => {
+    setTimeout(() => {
+        setStatus(status[step]);
+        descontar(credito);
+        setCredito('');
+    }, 3000);
+  }
 
   return (
     <div>
@@ -59,6 +71,15 @@ export default function Solicitud() {
                     Solicitar
                   </Button>
                 </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title>Proceso</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{estatus}</Card.Subtitle>
               </Card.Body>
             </Card>
           </Col>

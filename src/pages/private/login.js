@@ -12,6 +12,8 @@ export default function Login() {
   const log = () => {
     if (user && pass) {
       const us = {
+        id: 8,
+        tele: 7717005028,
         name: user,
         saldo: 2000,
         credito: 30000,
