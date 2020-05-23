@@ -89,18 +89,6 @@ export default function Inicio() {
         </Col>
       </Row>
 
-      <Container>
-        {
-          cards(arrayCards, styles.padding3)
-        }
-
-        <Row className={styles.padding3}>
-          {
-            imagesCircle(arrayClientes)
-          }
-        </Row>
-      </Container>
-
       <Row className={[styles.padding3, styles.backgroundBlack]}>
         <Container>
           <Row>
@@ -127,6 +115,18 @@ export default function Inicio() {
           </Row>
         </Container>
       </Row>
+
+      <Container>
+        {
+          cards(arrayCards, styles.padding3)
+        }
+
+        <Row className={styles.padding3}>
+          {
+            imagesCircle(arrayClientes)
+          }
+        </Row>
+      </Container>
     </div>
   );
 }

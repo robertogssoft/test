@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {Navbar, Nav, Row, Container, Col, Card} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import styles from './styles/login.module.css';
 import {formatter} from './../../functions';
 import {UserContext} from '../../context/UserContext';
 
@@ -13,12 +14,13 @@ export default function Panel() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
+            <Nav.Link><Link to='/solicitar'>Solicitar Crédito</Link></Nav.Link>
             <Nav.Link onClick={logoutUser}>Cerrar sesión</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
-      <Container>
+      <Container className={styles.container}>
         <Row>
           <Col>
             <Card style={{ width: '18rem' }}>

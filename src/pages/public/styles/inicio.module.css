@@ -15,16 +15,13 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 .black {
   color: #FFF;
   text-shadow: 1px 1px 3px #000;
 }
-
 .backgroundBlack {
   background-color: #000000;
 }
-
 .margin1{
   margin: 1rem;
 }
@@ -35,7 +32,6 @@ body {
   padding-left: 10px;
   color: white !important;
 }
-
 .white{
   color: white;
 }

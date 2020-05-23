@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Navbar, Nav, Row, Container, Col, Card, Form, Button} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import styles from './styles/login.module.css';
 import {formatter} from './../../functions';
 import {UserContext} from '../../context/UserContext';
 
@@ -47,7 +48,7 @@ export default function Solicitud() {
         </Navbar.Collapse>
       </Navbar>
 
-      <Container>
+      <Container className={styles.container}>
         <Row>
           <Col>
             <Card style={{ width: '18rem' }}>
