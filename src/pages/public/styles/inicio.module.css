@@ -1,0 +1,42 @@
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+.centrado {
+  justify-content: center !important;
+  text-align: center;
+  align-items: center;
+}
+.derecha {
+  justify-content: flex-end !important;
+}
+.between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.black {
+  color: #FFF;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.backgroundBlack {
+  background-color: #000000;
+}
+
+.margin1{
+  margin: 1rem;
+}
+.padding3{
+  padding: 1.5rem 0rem 1.5rem 0rem;
+}
+.padding5{
+  padding-left: 10px;
+  color: white !important;
+}
+
+.white{
+  color: white;
+}
+  
