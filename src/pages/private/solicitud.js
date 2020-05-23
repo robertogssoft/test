@@ -4,28 +4,32 @@ import {Link} from "react-router-dom";
 import {formatter} from './../../functions';
 import {UserContext} from '../../context/UserContext';
 
-const status = ['Sin solicitud', 'En proceso', 'Validando'];
-
 export default function Solicitud() {
-  const {user, logoutUser, descontar} = useContext(UserContext);
-  const [credito, setCredito] = useState('');
-  const [estatus, setStatus] = useState(status[0]);
+  const {user, logoutUser, descontar, cambiarEstatus, credito} = useContext(UserContext);
+  const [monto, setMonto] = useState('');
+  const [status, setStatus] = useState(true);
 
   const solicitar = () => {
-    if (credito <= user.credito && credito > 0){
-      setStatus(status[1]);
-      cambiarEstatus(2);
+    if (monto <= credito.monto && monto > 0){
+      cambiarEstatus('en_proceso');
+      estatus();
     } else {
       alert('Por favor, revise su solicitud');
     }
   };
 
-  const cambiarEstatus = (step) => {
+  const estatus = () => {
     setTimeout(() => {
-        setStatus(status[step]);
-        descontar(credito);
-        setCredito('');
-    }, 3000);
+      if (status){
+        descontar(monto);
+        setStatus(false);
+      } else {
+        cambiarEstatus('cancelado');
+        setStatus(true);
+      }
+
+      setMonto('');
+    }, 3000);    
   }
 
   return (
@@ -51,7 +55,7 @@ export default function Solicitud() {
                 <Card.Title>Crédito disponible</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Usted dispone de</Card.Subtitle>
                 <Card.Text>
-                  {formatter.format(user.credito)}
+                  {formatter.format(credito.monto)}
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -65,7 +69,7 @@ export default function Solicitud() {
                 <Form>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Label>Usuario</Form.Label>
-                    <Form.Control type="number" placeholder="00.00" onChange={(e) => setCredito(e.target.value)} value={credito} />
+                    <Form.Control type="number" placeholder="00.00" onChange={(e) => setMonto(e.target.value)} value={monto} />
                   </Form.Group>
                   <Button variant="primary" type="button" onClick={solicitar}>
                     Solicitar
@@ -79,7 +83,7 @@ export default function Solicitud() {
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <Card.Title>Proceso</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{estatus}</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">{credito.estatus}</Card.Subtitle>
               </Card.Body>
             </Card>
           </Col>

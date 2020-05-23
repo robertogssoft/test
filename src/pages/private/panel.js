@@ -5,7 +5,7 @@ import {formatter} from './../../functions';
 import {UserContext} from '../../context/UserContext';
 
 export default function Panel() {
-  let {user, logoutUser} = useContext(UserContext);
+  let {user, logoutUser, credito} = useContext(UserContext);
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -37,7 +37,7 @@ export default function Panel() {
             <Card.Title>Crédito disponible</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Usted dispone de</Card.Subtitle>
                 <Card.Text>
-                  <Link to="/solicitar">{formatter.format(user.credito)}</Link>
+                  <Link to="/solicitar">{formatter.format(credito.monto)}</Link>
                 </Card.Text>
               </Card.Body>
             </Card>

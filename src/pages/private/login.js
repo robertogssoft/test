@@ -16,7 +16,6 @@ export default function Login() {
         tele: 7717005028,
         name: user,
         saldo: 2000,
-        credito: 30000,
       }
       loginUser(us);
     } else {
